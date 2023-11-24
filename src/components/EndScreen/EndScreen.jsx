@@ -1,9 +1,12 @@
 import React from 'react'
+import './EndScreen.css'
 
-const EndScreen = ({retry}) => {
+const EndScreen = ({retry, score}) => {
   return (
     <div>
-      <button onClick={retry}>Reiniciar</button>
+      <h1>Fim de Jogo!</h1>
+      <h2>A sua pontuação foi:<span> {score}</span></h2>
+      <button onClick={retry}>Tentar Novamente</button>
     </div>
   )
 }

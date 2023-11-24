@@ -23,7 +23,7 @@ function App() {
   const [letters, setLetters] = useState([])
   const [wrongLetters, setWrongLetters] = useState([])
   const [guessedLetters, setGuessedLetters] = useState([])
-  const[guesses, setGuesses] = useState(3)
+  const[guesses, setGuesses] = useState(5)
   const[score, setScore] = useState(0)
 
 
@@ -67,13 +67,30 @@ function App() {
       ])
     } else {
       setWrongLetters((actualWrongLetters)=>[
-        ...actualWrongLetters, normalizeLetter  
+        ...actualWrongLetters, normalizeLetter
       ])
+
+      //game over
+      setGuesses((actualGuesses) => actualGuesses - 1)
     }
   }
 
+  const clearLetterStates=()=>{
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
+  useEffect(()=>{
+    if(guesses <= 0){
+      //reset all stages
+      clearLetterStates()
+      setGameStage(stages[2].name)
+    }
+  })
+
   //restart the game
   const restartTheGame=()=>{
+    setScore(0)
+    setGuesses(5)
     setGameStage(stages[0].name)
   }
 
@@ -90,7 +107,7 @@ function App() {
         score={score}
         verifyLetter={verifyLetter}
         />}
-      {gameStage === 'end' && <EndScreen retry={restartTheGame}/>}
+      {gameStage === 'end' && <EndScreen retry={restartTheGame} score={score}/>}
     </div>
   )
 }

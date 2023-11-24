@@ -20,7 +20,7 @@ const GameScreen = ({verifyLetter, pickedCategory, pickedWord, letters, guesses,
         </p>
         <h1>Adivinhe a palavra:</h1>
           <h3 className='tip'>Dica sobre a palavra: <span>{pickedCategory}</span></h3>
-          <p>Você ainda tem {guesses} tentativas</p>
+          <p>Você ainda tem {guesses} tentativa(s)</p>
           <div className="wordContainer">
             {letters.map((letters, i)=>(
               guessedLetters.includes(letters) ? (
