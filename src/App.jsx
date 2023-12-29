@@ -93,7 +93,6 @@ function App() {
   useEffect(()=>{
     const uniqueLetters=[... new Set(letters)]
     console.log(uniqueLetters)
-    
     //win condition
     if(guessedLetters.length === uniqueLetters.length){
       //add score
@@ -102,6 +101,7 @@ function App() {
       clearLetterStates()
       startGame()
     }
+    
   },[guessedLetters,letters, startGame])
 
   //restart the game
